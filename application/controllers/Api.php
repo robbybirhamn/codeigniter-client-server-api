@@ -55,10 +55,11 @@ class Api extends RestController {
 
     public function index_delete() {
         $id = $this->delete('kdmk');
+        
         $this->db->where('kdmk', $id);
         $delete = $this->db->delete('matakuliah');
         if ($delete) {
-            $this->response(array('status' => 'success'), 201);
+            $this->response(array('status' => 'success'.$id), 201);
         } else {
             $this->response(array('status' => 'fail', 502));
         }

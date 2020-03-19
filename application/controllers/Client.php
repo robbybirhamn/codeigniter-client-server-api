@@ -32,7 +32,8 @@ Class Client extends CI_Controller{
                 'prodi'=>$this->input->post('prodi')
             ]
         ]);
-        echo $response->getBody()->getContents();
+        // echo $response->getBody()->getContents();
+        return redirect(base_url('client'),'refresh');
     }
     
     // edit data mahasiswa
@@ -63,7 +64,8 @@ Class Client extends CI_Controller{
                 'prodi'=>$this->input->post('prodi'),
             ]
         ]);
-        echo $response->getBody()->getContents();
+        // echo $response->getBody()->getContents();
+        return redirect(base_url('client'),'refresh');
     }
     
     // delete data mahasiswa
@@ -72,11 +74,11 @@ Class Client extends CI_Controller{
         $client = new GuzzleHttp\Client();
         // Send a request to https://foo.com/api/test
         $response = $client->request('DELETE', 'http://localhost/rest-api/api',[
-            'json' => [
-                'kdmk'=>$id
+            'form_params' => [
+                'kdmk'=>$id,
             ]
         ]);
-        
+        // echo $response->getBody()->getContents();
         return redirect(base_url('client'),'refresh');
     }
 }
